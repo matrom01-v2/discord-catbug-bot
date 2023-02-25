@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "discord.js": "^14.7.1"
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3"
   },
   "name": "catbug-bot",
   "version": "1.0.0",
