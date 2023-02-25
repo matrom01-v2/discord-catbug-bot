@@ -1,7 +1,7 @@
 // require dependencies
 const {Client, GatewayIntentBits} = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-const TOKEN = process.env.DISCORD_TOKEN;
+const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 
 require("dotenv").config();
 
@@ -26,4 +26,4 @@ client.on('interactionCreate', async interaction => {
 })
 
 
-client.login(TOKEN);
+client.login(DISCORD_TOKEN);
