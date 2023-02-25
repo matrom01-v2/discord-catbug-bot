@@ -1,5 +1,22 @@
 {
   "dependencies": {
     "discord.js": "^14.7.1"
-  }
+  },
+  "name": "catbug-bot",
+  "version": "1.0.0",
+  "description": "This is a little helper bot for my personal discord",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matrom01-v2/discord-cardgame-bot.git"
+  },
+  "author": "Mateo Romero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matrom01-v2/discord-cardgame-bot/issues"
+  },
+  "homepage": "https://github.com/matrom01-v2/discord-cardgame-bot#readme"
 }
