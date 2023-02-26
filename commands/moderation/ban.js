@@ -4,6 +4,8 @@ const { ApplicationCommandOptionType, ApplicationCommandType, PermissionFlagsBit
 module.exports = {
     name: 'ban',
     description: 'Catbug slays a user!',
+    devsOnly: true,
+    // testOnly: bool
     options: [
         {
             name: 'target-user',
