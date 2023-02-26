@@ -1,14 +1,18 @@
 // require dependencies
-const {Client, GatewayIntentBits} = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
+const {Client, GatewayIntentBits, IntentsBitField} = require('discord.js');
+const token = process.env.DISCORD_TOKEN;
 
 require("dotenv").config();
 
 
+const client = new Client({ intents: [
+    GatewayIntentBits.Guilds,
+], 
+});
 
 
-console.log("my token: " + process.env.DISCORD_TOKEN);
+
+console.log("MY TOKEN HERE: " + process.env.DISCORD_TOKEN);
 
 
 
@@ -16,14 +20,17 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('interactionCreate', async interaction => {
-    
-    if(!interaction.isChatInputCommand()) return;
 
-    if (interaction.commandName === 'hello') {
-        await interaction.reply('Hi I\'m catbug!!!');
-    }
+client.on('interactionCreate',  (interaction) => {
+    
+    if (!interaction.isChatInputCommand()) return; // if not a good interaction, error
+
+    console.log(`Incoming interaction: ${interaction.commandName}`); // prints incoming interaction
+
+    if (interaction.commandName === 'hello')
+        interaction.reply('Hi, I\'m Catbug!!!!');
+  
 })
 
 
-client.login(DISCORD_TOKEN);
+client.login(token);

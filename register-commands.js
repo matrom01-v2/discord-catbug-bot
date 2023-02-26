@@ -3,7 +3,7 @@ const {REST, routes, Routes} = require('discord.js');
 require("dotenv").config();
 
 
-const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
+const token = process.env.DISCORD_TOKEN;
 const clientID = process.env.CLIENT_ID;
 const guildID = process.env.GUILD_ID;
 
@@ -16,7 +16,7 @@ const commands = [
     },
 ];
 
-const rest = new REST({version: '10'}).setToken(DISCORD_TOKEN);
+const rest = new REST({version: '10'}).setToken(token);
 
 // This registers slash commands
 (async () => {
