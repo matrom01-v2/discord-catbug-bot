@@ -1,10 +1,11 @@
-const { ApplicationCommandOptionType, ApplicationCommandType, PermissionFlagsBits} = require('discord.js');
+const { ApplicationCommandOptionType, PermissionFlagsBits} = require('discord.js');
 
 
 module.exports = {
     name: 'ban',
     description: 'Catbug slays a user!',
     devsOnly: true,
+    deleted: false,
     // testOnly: bool
     options: [
         {
@@ -23,6 +24,6 @@ module.exports = {
     permissionsRequired: [PermissionFlagsBits.Administrator],
 
     callBack: (client, interaction) => {
-        interaction.reply('banned');
+        interaction.reply('Throw this noise maker out the airlock.');
     },
 };

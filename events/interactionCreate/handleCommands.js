@@ -1,6 +1,7 @@
 const getLocalCommands = require("../../util/getLocalCommands");
 
 const { devs, testServer } = require('../../config.json');
+const { permissionsRequired } = require("../../commands/moderation/ban");
 
 
 
@@ -17,7 +18,7 @@ module.exports = async (client, interaction) => {
         if (!commandObject) return;
 
         // check if command is dev only
-        if(commandObject.devOnly) {
+        if(commandObject.devsOnly) {
             if (!devs.includes(interaction.member.id)) {
                 interaction.reply({
                     content: 'You\'re in a position to demand nothing, kitchen wench Tezuka.',
@@ -41,7 +42,7 @@ module.exports = async (client, interaction) => {
         // check for permissions
         if (commandObject.permissionsRequired?.length) {
             for (const permissions of commandObject.permissionsRequired) {
-                if(!interaction.member.permissions.has(permission)) {
+                if(!interaction.member.permissions.has(permissionsRequired)) {
                     interaction.reply({
                         content: 'Momma said, you can\'t do that.',
                         ephemeral: true,
@@ -59,7 +60,4 @@ module.exports = async (client, interaction) => {
     }
 
     console.log(`Incoming interaction: ${interaction.commandName}`); // prints incoming interaction
-
-    
-  
 };
