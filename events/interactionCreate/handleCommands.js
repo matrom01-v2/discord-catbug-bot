@@ -41,7 +41,7 @@ module.exports = async (client, interaction) => {
 
         // check for permissions
         if (commandObject.permissionsRequired?.length) {
-            for (const permissions of commandObject.permissionsRequired) {
+            for (const permissionsRequired of commandObject.permissionsRequired) {
                 if(!interaction.member.permissions.has(permissionsRequired)) {
                     interaction.reply({
                         content: 'Momma said, you can\'t do that.',
