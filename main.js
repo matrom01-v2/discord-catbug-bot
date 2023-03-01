@@ -13,7 +13,7 @@ const client = new Client({ intents: [
 
 
 
-console.log("MY TOKEN HERE: " + process.env.DISCORD_TOKEN);
+console.log("MY TOKEN HERE: " + process.env.DISCORD_TOKEN); // test test
 
 
 eventHandler(client);
