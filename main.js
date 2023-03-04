@@ -18,8 +18,10 @@ const client = new Client({ intents: [
 
 ( async () => {
     try {
+        mongoose.set('strictQuery', false);
         await mongoose.connect(process.env.MONGODB_URI, {keepAlive: true});
         console.log('Connected to DB');
+        
         eventHandler(client);
         client.login(token);
         
