@@ -14,8 +14,7 @@ const helperEmbed = new EmbedBuilder({
     },    
     fields: [
         {
-            name: 'Commands available',
-            value: 'Here\'s what I can do!'
+            name: 'Commands available:',
         },
         {
             name: '/hello',
@@ -26,8 +25,12 @@ const helperEmbed = new EmbedBuilder({
             value: 'I help you out!'
         },
         {
+            name: '/kick',
+            value: 'I throw someone out the airlock!'
+        },
+        {
             name: '/ban',
-            value: 'Why would you do that?'
+            value: 'I rip someone\'s head off!'
         },
 
     ],
