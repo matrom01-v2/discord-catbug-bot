@@ -46,17 +46,17 @@ module.exports = {
 
         // catbug can now kill the user
         try {
-            await targetUser.ban({ reason });
+            await targetUser.kick( reason );
             await interaction.editReply(`Throw this noise maker ${targetUser} out the airlock for ${reason}. Now, where's my big ol' beer? There you are, yes. *slurp*`);
         } catch (error) {
-            console.log(`Error in ban command: ${error}`);
+            console.log(`Error in kick command: ${error}`);
         }
 
     },
 
 
-    name: 'ban',
-    description: 'Catbug slays a user!',
+    name: 'kick',
+    description: 'Catbug kicks a user!',
     devsOnly: true,
     deleted: false,
     // testOnly: bool
@@ -74,7 +74,7 @@ module.exports = {
             type: ApplicationCommandOptionType.String,
         }
     ],
-    permissionsRequired: [PermissionFlagsBits.Administrator],
-    botPermissions: [PermissionFlagsBits.Administrator],
+    permissionsRequired: [PermissionFlagsBits.KickMembers],
+    botPermissions: [PermissionFlagsBits.KickMembers],
 
 };
