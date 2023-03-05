@@ -17,7 +17,7 @@ module.exports = (client) => {
         client.on(eventName, async (arg) => {
             for (const eventFile of eventFiles) {
                 const eventFunction = require(eventFile); // define function inside of files
-                await eventFunction(client, arg); // run function inside files
+                eventFunction(client, arg); // run function inside files
             }
         })
     }

@@ -9,12 +9,14 @@ const helperEmbed = new EmbedBuilder({
         url: 'attachment://catbugpfp.gif',
     },
     description: 'Yeah! Everything is okay!',
+    ephemeral: true,
     thumbnail: {
         url: 'https://i.kym-cdn.com/entries/icons/facebook/000/012/812/Catbug_by_sircinnamon-d5riz9k.jpg'
     },    
     fields: [
         {
             name: 'Commands available:',
+            value: ''
         },
         {
             name: '/hello',

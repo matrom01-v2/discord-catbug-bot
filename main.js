@@ -1,5 +1,5 @@
 // require dependencies
-const {Client, GatewayIntentBits, IntentsBitField} = require('discord.js');
+const {Client, GatewayIntentBits, IntentsBitField } = require('discord.js');
 const token = process.env.DISCORD_TOKEN;
 const eventHandler = require('./handlers/eventHandler');
 const mongoose = require('mongoose');
@@ -10,6 +10,8 @@ require("dotenv").config();
 
 const client = new Client({ intents: [
     GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages,
 ], 
 });
 

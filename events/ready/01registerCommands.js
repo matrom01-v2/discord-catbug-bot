@@ -22,7 +22,7 @@ module.exports = async (client) => {
             );
 
             if (existingCommand) {
-                console.log(`Existing Commands: ${existingCommand.name}`);
+                // console.log(`Existing Commands: ${existingCommand.name}`);
                 if (localCommand.deleted) {
                     await applicationCommands.delete(existingCommand.id);
                     continue;
