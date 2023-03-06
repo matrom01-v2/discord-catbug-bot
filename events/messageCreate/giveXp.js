@@ -57,7 +57,7 @@ module.exports = async (client, message) => {
             coolDown.add(message.author.id);
             setTimeout(() => {
                 coolDown.delete(message.author.id);
-            }, 60000);
+            }, 20000);
         }
 
         // if level is no there, create a new one
@@ -74,7 +74,7 @@ module.exports = async (client, message) => {
             coolDown.add(message.author.id);
             setTimeout(() => {
                 coolDown.delete(message.author.id);
-            }, 60000);
+            }, 20000);
         }
 
 

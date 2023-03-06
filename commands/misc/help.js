@@ -9,7 +9,6 @@ const helperEmbed = new EmbedBuilder({
         url: 'attachment://catbugpfp.gif',
     },
     description: 'Yeah! Everything is okay!',
-    ephemeral: true,
     thumbnail: {
         url: 'https://i.kym-cdn.com/entries/icons/facebook/000/012/812/Catbug_by_sircinnamon-d5riz9k.jpg'
     },    
@@ -48,6 +47,6 @@ module.exports = {
     description: 'catbug offers you some help!',
 
     callBack: (client, interaction) => {
-        interaction.reply({embeds: [helperEmbed], files: [file] });
+        interaction.reply({embeds: [helperEmbed], files: [file], ephemeral: true});
     }
 }  
