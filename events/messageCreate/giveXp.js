@@ -1,6 +1,7 @@
 const { Client, Message} = require('discord.js');
 const Level = require('../../schemas/Level');
 const calculateLevelXp = require('../../util/calculateLevelXp');
+const coolDown = new Set();
 
 // return a rando value between min and max
 function getRandomXp(min, max) {
@@ -16,7 +17,8 @@ function getRandomXp(min, max) {
  * @param {Message} message 
  */
 module.exports = async (client, message) => {
-    if(!message.inGuild() || message.author.bot) {
+
+    if(!message.inGuild() || message.author.bot || coolDown.has(message.author.id)) { // validate funny message, stop silly spammers
         // console.log('inside this if statement'); // see if im readhing this
         return;
     }    
@@ -51,7 +53,11 @@ module.exports = async (client, message) => {
             await level.save().catch((e) => {
                 console.log(`Error in updating level schema ${e}`);
                 return;
-            })
+            });
+            coolDown.add(message.author.id);
+            setTimeout(() => {
+                coolDown.delete(message.author.id);
+            }, 60000);
         }
 
         // if level is no there, create a new one
@@ -65,6 +71,10 @@ module.exports = async (client, message) => {
             });
 
             await newLevel.save(); 
+            coolDown.add(message.author.id);
+            setTimeout(() => {
+                coolDown.delete(message.author.id);
+            }, 60000);
         }
 
 
