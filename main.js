@@ -17,7 +17,7 @@ const client = new Client({ intents: [
 });
 
 
- console.log("MY TOKEN HERE: " + process.env.DISCORD_TOKEN); // test test test
+ // console.log("MY TOKEN HERE: " + process.env.DISCORD_TOKEN); // test test test
 
 ( async () => {
     try {
@@ -26,7 +26,7 @@ const client = new Client({ intents: [
         console.log('Connected to DB');
         
         eventHandler(client);
-        client.login("1078862080771371129");
+        client.login(token);
         
     } catch (error) {
         console.log(`Error: ${error}`);

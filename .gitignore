@@ -1,4 +1,4 @@
 node_modules
+data/rules.json
 .env
 config.json
-rules.csv
