@@ -12,6 +12,22 @@ const profileSchema = new Schema({
         required: true,
     },
 
+    name: {
+        type: String,
+        default: '',
+    },
 
+    pronouns: {
+        type: String,
+        default: '',
+    },
+
+    bio: {
+        type: String,
+        default: '',
+    }
     
 });
+
+
+module.exports = model('Profile', profileSchema); 
