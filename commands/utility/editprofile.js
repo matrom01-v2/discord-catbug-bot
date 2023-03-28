@@ -1,8 +1,6 @@
 const {
   Client,
-  Interaction,
   AttachmentBuilder,
-  ApplicationCommandOptionType,
   ActionRowBuilder,
   ModalBuilder,
   TextInputBuilder,
@@ -74,6 +72,7 @@ module.exports = {
     // display das modal to the funni user
     await interaction.showModal(modal);
 
+    // timeout for no response
     const submission = await interaction.awaitModalSubmit({
       time: 60000,
     });
@@ -91,7 +90,7 @@ module.exports = {
       friendsProfile.pronouns = pronouns;
       friendsProfile.bio = bio;
 
-      await friendsProfile.save();
+      await friendsProfile.save(); // save new info to db
       console.log(`Profile sucessfully edited!`);
     } catch (error) {
       console.log(`Error adding profile: ${error}`);

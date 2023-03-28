@@ -1,4 +1,4 @@
-const { Client, Interaction, ApplicationCommandOptionType, AttachmentBuilder } = require('discord.js');
+const { Client, Interaction, ApplicationCommandOptionType, AttachmentBuilder, ChatInputCommandInteraction } = require('discord.js');
 const Level = require('../../schemas/Level');
 const canvacord =  require('canvacord');
 const calculateLevelXp = require('../../util/calculateLevelXp');
@@ -9,7 +9,7 @@ module.exports = {
     /**
      * 
      * @param {Client} client 
-     * @param {Interaction} interaction 
+     * @param {ChatInputCommandInteraction} interaction 
      */
     callBack: async (client, interaction) => {
         if(!interaction.inGuild()) {
@@ -20,27 +20,35 @@ module.exports = {
 
         await interaction.deferReply();
 
-        const mentionUser = interaction.options.get('friend')?.value; // grab passed in friend
-        console.log(`Here is mentionUser: ${mentionUser}`);
+        const mentionMember = interaction.options.getMember('friend') ?? interaction.member;; // grab passed in friend
+        console.log(`Here is mentionUser: ${mentionMember}`);
 
-        const targetUserId = mentionUser || interaction.member.id; // if mention user es no there, grab the homie that ran the command
+        // const targetUserId = mentionUser || interaction.member.id; // if mention user es no there, grab the homie that ran the command
 
-        const targetUserObj = await interaction.guild.members.fetch(targetUserId);
+        // const targetUserObj = await interaction.guild.members.fetch(targetUserId);
 
         const friendsLevel = await Level.findOne({
-            userId: targetUserId,
+            userId: mentionMember.user.id,
             guildId: interaction.guild.id,
         });
 
+        // check if the funny is a bot
+        if(mentionMember.user.bot){
+            interaction.editReply(`I'm Catbug!`);
+            return;
+        }
+
+        // no friend?
         if (!friendsLevel) {
             interaction.editReply(
-                mentionUser ? `${targetUserObj.user.tag} is not friends with me yet.` : "You are not friends with me yet..."
+                mentionMember ? `${mentionMember.displayname} is not friends with me yet.` : "You are not friends with me yet..."
             );
             return;
         }
 
-        let allLevels = await Level.find({ guildId: interaction.guild.id }).select('-_id userId level xp');
+        let allLevels = await Level.find({ guildId: interaction.guild.id }).select('-_id userId level xp');// grab necessities from db
 
+        // sort through all levels 
         allLevels.sort((a, b) => {
             if (a.level === b.level) {
                 return b.xp = a.xp; // get homie with more xp
@@ -50,18 +58,18 @@ module.exports = {
             }
         });
 
-        let currentRank = allLevels.findIndex((lvl) => lvl.userId === targetUserId) + 1;
+        let currentRank = allLevels.findIndex((lvl) => lvl.userId === mentionMember.user.id) + 1; // grab homie ranks
 
+        // create rank card
         const rank = new canvacord.Rank()
-            .setAvatar(targetUserObj.user.displayAvatarURL({size: 256}))
+            .setAvatar(mentionMember.displayAvatarURL({size: 256}))
             .setRank(currentRank)
             .setLevel(friendsLevel.level)
             .setCurrentXP(friendsLevel.xp)
             .setRequiredXP(calculateLevelXp(friendsLevel.level))
-            .setStatus(targetUserObj.presence.status)
             .setProgressBar('#932BE3', 'COLOR')
-            .setUsername(targetUserObj.user.username)
-            .setDiscriminator(targetUserObj.user.discriminator);
+            .setUsername(mentionMember.user.username)
+            .setDiscriminator(mentionMember.user.discriminator);
 
         const data = await rank.build();
         const attachment = new AttachmentBuilder(data);

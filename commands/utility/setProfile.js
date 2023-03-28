@@ -3,7 +3,6 @@ const {
   Interaction,
   ApplicationCommandOptionType,
   ActionRowBuilder,
-  Events,
   ModalBuilder,
   TextInputBuilder,
   TextInputStyle,
@@ -25,7 +24,7 @@ module.exports = {
     // await interaction.deferReply();
 
     const mentionMember = interaction.member; // grab passed in friend
-    console.log(`Here is mentionUser: ${mentionUser}`);
+    // console.log(`Here is mentionUser: ${mentionUser}`);
 
     const friendsProfile = await Profile.findOne({
       userId: mentionMember.user.id,
@@ -90,7 +89,7 @@ module.exports = {
 
     try {
       if (friendsProfile) {
-        console.log(`User ${mentionUser.user.tag} already has a profile.`);
+        console.log(`User ${mentionMember.displayName} already has a profile.`);
         return;
       }
 
