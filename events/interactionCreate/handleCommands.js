@@ -1,6 +1,6 @@
 const getLocalCommands = require("../../util/getLocalCommands");
 
-const { devs, testServer } = require('../../config.json');
+const { devs, mainServer } = require('../../config.json');
 const { permissionsRequired } = require("../../commands/moderation/ban");
 
 
@@ -30,7 +30,7 @@ module.exports = async (client, interaction) => {
 
         // check if valid server
         if(commandObject.testOnly) {
-            if (!interaction.guild.id === testServer) {
+            if (!interaction.guild.id === mainServer) {
                 interaction.reply({
                     content: 'Uuuuummm I can\'t do that here.',
                     ephemeral: true,
