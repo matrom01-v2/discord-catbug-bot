@@ -24,7 +24,7 @@ module.exports = {
     }
 
     const mentionMember = interaction.member; // grab member
-    console.log(`Here is mentionUser: ${mentionUser}`);
+    console.log(`Here is mentionUser: ${mentionMember}`);
 
     // const targetUserId = mentionUser; // set target to passed in value
 

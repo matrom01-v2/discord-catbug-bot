@@ -2,3 +2,4 @@ node_modules
 data/rules.json
 .env
 config.json
+data/sensitiveData.txt
