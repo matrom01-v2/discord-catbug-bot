@@ -35,10 +35,16 @@ module.exports = {
             guildId: interaction.guild.id,
         });
 
+        // is bot?
+        if(mentionMember.user.bot){
+            interaction.editReply(`I'm Catbug!`);
+            return;
+        }
+
         // no friend?
         if (!friendsProfile) {
             interaction.editReply(
-                mentionMember ? `${mentionMember.user.tag} is not friends with me yet.` : "You are not friends with me yet..."
+                mentionMember ? `${mentionMember.displayName} is not friends with me yet.` : "You are not friends with me yet..."
             );
             return;
         }

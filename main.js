@@ -21,18 +21,19 @@ const client = new Client({ intents: [
 
 ( async () => {
     try {
-        mongoose.set('strictQuery', false);
-        await mongoose.connect(process.env.MONGODB_URI, {keepAlive: true});
+        mongoose.set('strictQuery', false); // set for strict queries
+        await mongoose.connect(process.env.MONGODB_URI, {keepAlive: true}); // connect to db
         console.log('Connected to DB');
         
-        eventHandler(client);
-        client.login(token);
+        eventHandler(client); // cycle through events
+        client.login(token); // log in discord
         
     } catch (error) {
         console.log(`Error: ${error}`);
     }
 })();
 
+// event listener for other interactions: mainly modal submissions
 client.on(Events.InteractionCreate, async interaction => {
 
     if (!interaction.isModalSubmit()) return;

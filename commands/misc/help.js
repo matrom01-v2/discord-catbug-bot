@@ -26,14 +26,21 @@ const helperEmbed = new EmbedBuilder({
             value: 'I help you out!'
         },
         {
-            name: '/kick',
-            value: 'I throw someone out the airlock!'
+            name: '/friend',
+            value: 'I display your profile!',
         },
         {
-            name: '/ban',
-            value: 'I rip someone\'s head off!'
+            name: '/setprofile',
+            value: 'I create a profile for you!',
         },
-
+        {
+            name: '/editprofile',
+            value: ' I help you edit your profile!',
+        },
+        {
+            name: '/level',
+            value: 'I display your level of friendship with me!'
+        },
     ],
     footer: {
         text: 'Yea but I don\'t know how to make myself go there',

@@ -47,7 +47,7 @@ module.exports = async (client, message) => {
                 level.xp = 0;      // reset xp
                 level.level += 1;  // increase level
 
-                message.channel.send(`${message.member} has leveled up to ${level.level}! Yay!`);   
+                message.channel.send(`${message.member} has reached ${level.level} friendship! Yay!`);   
             }
 
             // update the funny level in DB
