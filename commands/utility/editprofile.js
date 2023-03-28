@@ -1,20 +1,23 @@
 const {
   Client,
   Interaction,
+  AttachmentBuilder,
   ApplicationCommandOptionType,
   ActionRowBuilder,
-  Events,
   ModalBuilder,
   TextInputBuilder,
   TextInputStyle,
+  ChatInputCommandInteraction,
 } = require("discord.js");
 const Profile = require("../../schemas/Profile");
+const file = new AttachmentBuilder("./images/bug.png");
 
 module.exports = {
   /**
    *
    * @param {Client} client
-   * @param {Interaction} interaction
+   * @param {ChatInputCommandInteraction} interaction
+   * @returns
    */
   callBack: async (client, interaction) => {
     if (!interaction.inGuild()) {
@@ -22,23 +25,17 @@ module.exports = {
       return;
     }
 
-    // await interaction.deferReply();
-
-    const mentionMember = interaction.member; // grab passed in friend
+    const mentionMember = interaction.member; // grab member
     console.log(`Here is mentionUser: ${mentionUser}`);
+
+    // const targetUserId = mentionUser; // set target to passed in value
+
+    // const targetUserObj = await interaction.guild.members.fetch(targetUserId);
 
     const friendsProfile = await Profile.findOne({
       userId: mentionMember.user.id,
       guildId: interaction.guild.id,
     });
-
-    // check if user has a profile set already
-    if (friendsProfile) {
-      interaction.reply("I already know who you are!");
-      return;
-    }
-
-    // send form and push values to db
 
     // create a modal
     const modal = new ModalBuilder()
@@ -84,32 +81,23 @@ module.exports = {
     if (!submission) {
       return;
     }
+
     const name = submission.fields.getTextInputValue("nameInput");
     const pronouns = submission.fields.getTextInputValue("proInput");
     const bio = submission.fields.getTextInputValue("bioInput");
 
     try {
-      if (friendsProfile) {
-        console.log(`User ${mentionUser.user.tag} already has a profile.`);
-        return;
-      }
+      friendsProfile.name = name;
+      friendsProfile.pronouns = pronouns;
+      friendsProfile.bio = bio;
 
-      const newProfile = new Profile({
-        userId: interaction.user.id,
-        guildId: interaction.guild.id,
-        name: name,
-        pronouns: pronouns,
-        bio: bio,
-      });
-
-      await newProfile.save();
-      console.log(`Profile sucessfully sent to db!`);
+      await friendsProfile.save();
+      console.log(`Profile sucessfully edited!`);
     } catch (error) {
       console.log(`Error adding profile: ${error}`);
     }
   },
 
-  name: "setprofile",
-  description: "Catbug sets a server profile for you!",
-  type: ApplicationCommandOptionType.User,
+  name: "editprofile",
+  description: "Catbug edits a friends profile!",
 };

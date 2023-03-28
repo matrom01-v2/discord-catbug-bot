@@ -74,7 +74,7 @@ module.exports = {
         {
             name: 'friend',
             description: "The friend's level you wanna see",
-            type: ApplicationCommandOptionType.Mentionable,
+            type: ApplicationCommandOptionType.User,
         }    
     ]
 }

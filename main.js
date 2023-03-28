@@ -1,5 +1,5 @@
 // require dependencies
-const {Client, GatewayIntentBits, IntentsBitField } = require('discord.js');
+const {Client, GatewayIntentBits, IntentsBitField, Events } = require('discord.js');
 const token = process.env.DISCORD_TOKEN;
 const eventHandler = require('./handlers/eventHandler');
 const mongoose = require('mongoose');
@@ -32,5 +32,14 @@ const client = new Client({ intents: [
         console.log(`Error: ${error}`);
     }
 })();
+
+client.on(Events.InteractionCreate, async interaction => {
+
+    if (!interaction.isModalSubmit()) return;
+
+    if(interaction.customId === 'myProfile') {
+        await interaction.reply(`Sugar Peas!!! Thank you ${interaction.member.displayName} for your submission!`);
+    }
+});
 
 

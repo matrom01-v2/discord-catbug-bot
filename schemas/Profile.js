@@ -1,4 +1,4 @@
-const { Schema, mdoel} = require('mongoose');
+const { Schema, model} = require('mongoose');
 
 
 const profileSchema = new Schema({
