@@ -1,11 +1,11 @@
-const { Client, Interaction, ApplicationCommandOptionType, PermissionFlagsBits} = require('discord.js');
+const { Client, Interaction, ApplicationCommandOptionType, PermissionFlagsBits, ChatInputCommandInteraction} = require('discord.js');
 
 
 module.exports = {
     /**
      * this is for intellisense
      * @param {Client} client 
-     * @param {Interaction} interaction 
+     * @param {ChatInputCommandInteraction} interaction 
      */
     callBack: async (client, interaction) => {
 
