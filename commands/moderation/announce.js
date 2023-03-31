@@ -30,6 +30,7 @@ module.exports = {
 
     name: 'announce',
     description: 'Catbug will send an announcement to a specific channel',
+    devsOnly: true,
     options: [
         {
             name: 'location',
