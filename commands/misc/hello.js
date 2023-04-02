@@ -1,5 +1,7 @@
 const { ChatInputCommandInteraction } = require("discord.js")
 
+
+
 module.exports = {
     name: 'hello',
     description: 'Catbug says hi!',
@@ -11,6 +13,6 @@ module.exports = {
      * @param {ChatInputCommandInteraction} interaction 
      */
     callBack: (client, interaction) => {
-        interaction.reply('Hello I\'m Catbug!!!!')
+        interaction.reply({files: ["./images/catbughello.mp4"]}, "Hello!!!");
     }
 }
