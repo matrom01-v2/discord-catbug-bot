@@ -47,7 +47,7 @@ module.exports = {
       return;
     }
 
-    // is bot?
+    // is bot? reply is human
     if (mentionMember.user.bot) {
       interaction.editReply(`That's not a human!`);
       return;
