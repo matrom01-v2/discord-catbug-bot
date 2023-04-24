@@ -40,7 +40,7 @@ module.exports = {
       guildId: interaction.guild.id,
     });
 
-    // is catbug?
+    // is catbug? send catbug profile!
     if (mentionMember.user.id === interaction.client.user.id) {
       interaction.editReply({ embeds: [catbugProfile], emphemeral: false });
 
