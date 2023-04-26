@@ -20,7 +20,7 @@ module.exports = {
 
         await interaction.deferReply();
 
-        const mentionMember = interaction.options.getMember('friend') ?? interaction.member;; // grab passed in friend
+        const mentionMember = interaction.options.getMember('friend') ?? interaction.member; // grab passed in friend
         console.log(`Here is mentionUser: ${mentionMember}`);
 
         // const targetUserId = mentionUser || interaction.member.id; // if mention user es no there, grab the homie that ran the command
