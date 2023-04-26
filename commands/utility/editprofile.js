@@ -7,6 +7,7 @@ const {
   TextInputStyle,
   ChatInputCommandInteraction,
 } = require("discord.js");
+
 const Profile = require("../../schemas/Profile");
 const file = new AttachmentBuilder("./images/bug.png");
 

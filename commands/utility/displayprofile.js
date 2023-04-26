@@ -5,6 +5,7 @@ const {
   AttachmentBuilder,
   EmbedBuilder,
 } = require("discord.js");
+
 const Profile = require("../../schemas/Profile");
 const file = new AttachmentBuilder("./images/bug.png");
 const catbugProfile = require("../../data/catbugprofile");
@@ -28,12 +29,6 @@ module.exports = {
       interaction.options.getMember("friend") ?? interaction.member; // grab passed in friend or pass in person who called if null
     console.log(`Here is mentionMember: ${mentionMember}`);
 
-    // const targetUserId = mentionMember || interaction.member.id; // if mention user es no there, grab the homie that ran the command
-
-    // const targetUser = mentionMember ?? interaction.member;
-
-    // const targetUserObj = await interaction.guild.members.fetch(targetUserId);
-
     // do the funni db query
     const friendsProfile = await Profile.findOne({
       userId: mentionMember.user.id,
@@ -43,7 +38,6 @@ module.exports = {
     // is catbug? send catbug profile!
     if (mentionMember.user.id === interaction.client.user.id) {
       interaction.editReply({ embeds: [catbugProfile], emphemeral: false });
-
       return;
     }
 
