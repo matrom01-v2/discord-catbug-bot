@@ -15,7 +15,7 @@ module.exports = {
           }
 
         const channelToSend = interaction.options.getChannel('location'); // location is req, grab location of message
-        console.log(`Channel id to be sent to: $${channelToSend}`);
+       // console.log(`Channel id to be sent to: $${channelToSend}`);
         const message = interaction.options.getString('message');
 
 
@@ -31,6 +31,7 @@ module.exports = {
     name: 'announce',
     description: 'Catbug will send an announcement to a specific channel',
     devsOnly: true,
+
     options: [
         {
             name: 'location',
