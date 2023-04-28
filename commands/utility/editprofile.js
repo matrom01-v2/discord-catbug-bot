@@ -7,6 +7,7 @@ const {
   TextInputStyle,
   ChatInputCommandInteraction,
 } = require("discord.js");
+
 const Profile = require("../../schemas/Profile");
 const file = new AttachmentBuilder("./images/bug.png");
 
@@ -74,7 +75,7 @@ module.exports = {
 
     // timeout for no response
     const submission = await interaction.awaitModalSubmit({
-      time: 180000,
+      time: 240000,
     });
 
     if (!submission) {

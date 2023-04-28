@@ -5,21 +5,20 @@ const eventHandler = require('./handlers/eventHandler');
 const mongoose = require('mongoose');
 
 
-require("dotenv").config();
+require("dotenv").config(); // for .env 
 
-
+// declared intents
 const client = new Client({ intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMembers,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.GuildPresences,
-    GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent
 ], 
 });
 
 
- // console.log("MY TOKEN HERE: " + process.env.DISCORD_TOKEN); // test test test
+ // console.log("MY TOKEN HERE: " + process.env.DISCORD_TOKEN); 
 
 ( async () => {
     try {

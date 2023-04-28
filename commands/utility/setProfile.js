@@ -77,7 +77,7 @@ module.exports = {
     await interaction.showModal(modal);
 
     const submission = await interaction.awaitModalSubmit({
-      time: 180000,
+      time: 240000,
     });
 
     if (!submission) {
