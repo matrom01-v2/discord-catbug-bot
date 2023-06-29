@@ -44,4 +44,14 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 });
 
+client.on(Events.GuildMemberAdd, member => {
+
+    const channelID = process.env.WELCOME_CHANNEL.toString(); // grab channel id from env file
+
+    // console.log(`HERE IS THE CHANNEL: ${channelID}`);
+
+    // define channel and send welcome message
+    const channel = member.guild.channels.cache.get(channelID);
+    channel.send(`HIII!!! Welcome new friend @${member.displayName} to the server!!!`);
+});
 
