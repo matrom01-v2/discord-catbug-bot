@@ -75,7 +75,7 @@ module.exports = {
 
     // timeout for no response
     const submission = await interaction.awaitModalSubmit({
-      time: 60000,
+      time: 240000,
     });
 
     if (!submission) {
