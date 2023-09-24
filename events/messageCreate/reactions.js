@@ -24,7 +24,7 @@ module.exports = async (client, message) => {
 
     messageContent = messageContent.toLowerCase();
 
-    if( (messageContent.includes("good job") || messageContent.includes("thank")) || messageContent.includes("love") && messageContent.includes("catbug")) {
+    if( (messageContent.includes("good job") || messageContent.includes("thank") || messageContent.includes("love")) && messageContent.includes("catbug")) {
         await message.react('💖');
     }
 }
