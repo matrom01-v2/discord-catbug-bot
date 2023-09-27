@@ -29,7 +29,8 @@ const client = new Client({ intents: [
         eventHandler(client); // cycle through events
         client.login(token); // log in discord
         
-    } catch (error) {
+    } catch (error) 
+    {
         console.log(`Error: ${error}`);
     }
 })();
@@ -46,12 +47,18 @@ client.on(Events.InteractionCreate, async interaction => {
 
 client.on(Events.GuildMemberAdd, member => {
 
-    const channelID = process.env.WELCOME_CHANNEL.toString(); // grab channel id from env file
-
-    // console.log(`HERE IS THE CHANNEL: ${channelID}`);
+    
+    /**
+     * systemChannel is where system messages
+     * such as welcome events, and server boosts
+     * are announced....-_-  i am dumb...plz read 
+     * documenation, as it will save much time.
+     */
+    const checklID = member.guild.systemChannelId; 
+    // console.log(checklID);
 
     // define channel and send welcome message
-    const channel = member.guild.channels.cache.get(channelID);
-    channel.send(`HIII!!! Welcome new friend @${member.displayName} to the server!!!`);
+    const channel = member.guild.channels.cache.get(checklID);
+    channel.send(`HIII!!! Welcome new friend <@${member.id}> to the server!!!`);
 });
 
