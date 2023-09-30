@@ -33,7 +33,7 @@ module.exports = {
 
     // check if user has a profile set already
     if (friendsProfile) {
-      interaction.reply("I already know who you are!");
+      interaction.reply("Looks like I already know who you are!\nPlease us editprofile if you want to change something.");
       return;
     }
 
