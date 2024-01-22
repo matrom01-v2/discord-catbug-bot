@@ -71,8 +71,11 @@ module.exports = {
             .setUsername(mentionMember.user.username)
             .setDiscriminator(mentionMember.user.discriminator);
 
+        // console.log("rank card created.");
         const data = await rank.build();
+        //console.log("after built.");
         const attachment = new AttachmentBuilder(data);
+       // console.log("attachment made.");
         interaction.editReply({ files: [attachment]});
     }, 
     
