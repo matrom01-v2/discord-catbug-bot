@@ -27,7 +27,7 @@ const client = new Client({
 (async () => {
   try {
     mongoose.set("strictQuery", false); // set for strict queries
-    await mongoose.connect(process.env.MONGODB_URI, { keepAlive: true }); // connect to db
+    await mongoose.connect(process.env.MONGODB_URI); // connect to db
     console.log("Connected to DB");
 
     eventHandler(client); // cycle through events
