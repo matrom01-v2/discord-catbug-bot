@@ -68,8 +68,7 @@ module.exports = {
             .setCurrentXP(friendsLevel.xp)
             .setRequiredXP(calculateLevelXp(friendsLevel.level))
             .setProgressBar('#932BE3', 'COLOR')
-            .setUsername(mentionMember.user.username)
-            .setDiscriminator(mentionMember.user.discriminator);
+            .setUsername(mentionMember.user.username);
 
         // console.log("rank card created.");
         const data = await rank.build();
