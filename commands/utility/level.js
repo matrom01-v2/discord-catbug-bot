@@ -70,8 +70,11 @@ module.exports = {
             .setProgressBar('#932BE3', 'COLOR')
             .setUsername(mentionMember.user.username);
 
+        // console.log("rank card created.");
         const data = await rank.build();
+        //console.log("after built.");
         const attachment = new AttachmentBuilder(data);
+       // console.log("attachment made.");
         interaction.editReply({ files: [attachment]});
     }, 
     
