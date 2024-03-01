@@ -1,12 +1,11 @@
 const {
   Client,
-  Message,
   ApplicationCommandOptionType: { Integer },
   ChatInputCommandInteraction,
   AttachmentBuilder,
   EmbedBuilder,
 } = require("discord.js");
-const rules = require("../../data/rules.json");
+const Rule = require('../../schemas/Rule')
 const file = new AttachmentBuilder("./images/bug.png");
 // @ts-check
 
@@ -26,23 +25,31 @@ module.exports = {
       return;
     }
 
+    // look for rule in db based on passed in number
+    const foundRule = await Rule.findOne({
+      guildId: interaction.guild.id,
+      number: ruleNo,
+    })
+
+
     // check if rule num exists
-    if (!rules.hasOwnProperty(ruleNo)) {
-      interaction.reply("Uuuummm I don't think this rule exists...");
+    if(!foundRule) {
+      interaction.reply(`Hmmm, I don't think that rule exists...`);
       return;
+
     } else {
       // create embed for rule
       const ruleEmbed = new EmbedBuilder({
         color: 0x007bff,
-        title: "City of Faith Cult Guide",
+        title: `Rule ${foundRule.number}`,
         description: "Yeah! Everything is okay!",
         thumbnail: {
           url: "attachment://bug.png",
         },
         fields: [
           {
-            name: rules[ruleNo].name,
-            value: rules[ruleNo].description,
+            name: foundRule.title,  // number of rule 
+            value: foundRule.description,      // description from db
           },
         ],
         footer: {
@@ -52,6 +59,7 @@ module.exports = {
         },
       });
 
+      // send the embed back
       interaction.reply({
         embeds: [ruleEmbed],
         files: [file],
