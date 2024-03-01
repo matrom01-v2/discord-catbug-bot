@@ -6,6 +6,7 @@ const {
   ModalBuilder,
   TextInputBuilder,
   TextInputStyle,
+  PermissionFlagsBits
 } = require("discord.js");
 
 const Rule = require("../../schemas/Rule");
@@ -104,4 +105,6 @@ module.exports = {
       type: Integer,
     },
   ],
+    permissionsRequired: [PermissionFlagsBits.Administrator],
+    botPermissions: [PermissionFlagsBits.Administrator],
 };
