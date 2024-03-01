@@ -68,8 +68,7 @@ module.exports = {
             .setCurrentXP(friendsLevel.xp)
             .setRequiredXP(calculateLevelXp(friendsLevel.level))
             .setProgressBar('#932BE3', 'COLOR')
-            .setUsername(mentionMember.user.username)
-            .setDiscriminator(mentionMember.user.discriminator);
+            .setUsername(mentionMember.user.username);
 
         const data = await rank.build();
         const attachment = new AttachmentBuilder(data);

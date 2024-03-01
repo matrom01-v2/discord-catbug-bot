@@ -42,7 +42,7 @@ module.exports = {
     // create a modal
     const modal = new ModalBuilder()
       .setCustomId("myProfile")
-      .setTitle("My Proflie");
+      .setTitle("My Profile");
 
     // add components to modal
 
