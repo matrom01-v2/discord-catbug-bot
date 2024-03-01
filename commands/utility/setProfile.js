@@ -7,6 +7,7 @@ const {
   TextInputBuilder,
   TextInputStyle,
 } = require("discord.js");
+
 const Profile = require("../../schemas/Profile");
 
 module.exports = {
@@ -33,7 +34,7 @@ module.exports = {
 
     // check if user has a profile set already
     if (friendsProfile) {
-      interaction.reply("Looks like I already know who you are!\nPlease us editprofile if you want to change something.");
+      interaction.reply("Looks like I already know who you are!\nPlease use editprofile if you want to change something.");
       return;
     }
 
