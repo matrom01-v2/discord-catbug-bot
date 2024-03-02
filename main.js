@@ -46,6 +46,19 @@ client.on(Events.InteractionCreate, async (interaction) => {
       `Sugar Peas!!! Thank you ${interaction.member.displayName} for your submission!`
     );
   }
+
+  if(interaction.customId === "newRule") {
+    await interaction.reply(
+      `Sugar Peas!!! Thank you ${interaction.member.displayName} for your submission!`
+    );
+  }
+
+  if(interaction.customId === "deleteRule") {
+    await interaction.reply(
+      `I shall purge this rule from your server! Now bring me my big ol\' beer`
+    )
+  }
+
 });
 
 client.on(Events.GuildMemberAdd, (member) => {
