@@ -14,14 +14,20 @@ Catbug says hello
 ### Help
 Catbug displays a list of usable commands
  
-### Level
-Catbug keeps track of user messages, and grants XP on a cooldown. Use the command to see a user's rank and friendship level with Catbug!
+### Level and Leaderboard
+Catbug keeps track of user messages, and grants XP on a cooldown. Use the command to see a user's rank and friendship level with Catbug! Users can also use a leaderboard command
+that will display the top 5 friends of Catbug!
   
 ### Profile
 Catbug can create and edit a profile for a user! So far the profiles contain name, pronouns, and a biography to keep track of people in the server. Use /friend to see a user's profile! The profile and Level systems utilize MongoDB and interact accordingly.
    
 ### Kick and Ban
 Catbug can kick and ban users, but is only usable for designated roles and user's marked as "devsOnly"
+
+### Welcome messages
+Catbug will welcome new users to the server!
+
+
 
 
    
