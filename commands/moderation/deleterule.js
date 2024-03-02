@@ -26,6 +26,8 @@ module.exports = {
       number: ruleNumberInput,
     });
 
+    console.log(`Rule found: ${foundRule}`);
+
     // console.log(`DB found rule: ${foundRule}`);
 
     if (!foundRule) {
@@ -70,7 +72,8 @@ module.exports = {
     }
 
     try {
-      await foundRule.deleteOne();
+      await Rule.deleteOne(foundRule);
+      console.log(`Rule object: ${foundRule}`);
       console.log(`Rule ${ruleNumberInput} deleted from db!`);
     } catch (error) {
       console.log(
