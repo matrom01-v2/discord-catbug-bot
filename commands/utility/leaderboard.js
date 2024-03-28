@@ -24,8 +24,9 @@ module.exports = {
     // grab the funni top 5
     const topLeaders = await Level.find({ guildId: interaction.guild.id })
       .limit(5)
-      .sort({ level: -1 }); // grab the top 5 homies in ascending order
+      .sort({ level: -1, xp: -1 }); // grab the top 5 homies in ascending order
 
+    // console.log(`TOPLEADERS ${topLeaders}`);
 
     // helper function to grab user's name from query
     async function getName(index) {
