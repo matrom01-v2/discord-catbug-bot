@@ -51,7 +51,7 @@ module.exports = {
         // sort through all levels 
         allLevels.sort((a, b) => {
             if (a.level === b.level) {
-                return b.xp = a.xp; // get homie with more xp
+                return b.xp - a.xp; // get homie with more xp
             }
             else {
                 return b.level - a.level;
