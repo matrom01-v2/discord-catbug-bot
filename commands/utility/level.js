@@ -51,7 +51,7 @@ module.exports = {
         // sort through all levels 
         allLevels.sort((a, b) => {
             if (a.level === b.level) {
-                return b.xp = a.xp; // get homie with more xp
+                return b.xp - a.xp; // get homie with more xp
             }
             else {
                 return b.level - a.level;
@@ -68,8 +68,7 @@ module.exports = {
             .setCurrentXP(friendsLevel.xp)
             .setRequiredXP(calculateLevelXp(friendsLevel.level))
             .setProgressBar('#932BE3', 'COLOR')
-            .setUsername(mentionMember.user.username)
-            .setDiscriminator(mentionMember.user.discriminator);
+            .setUsername(mentionMember.user.username);
 
         // console.log("rank card created.");
         const data = await rank.build();
