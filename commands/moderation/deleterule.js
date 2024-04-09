@@ -31,6 +31,8 @@ module.exports = {
       number: ruleNumberInput,
     });
 
+    console.log(`Rule found: ${foundRule}`);
+
     // console.log(`DB found rule: ${foundRule}`);
 
     if (!foundRule) {

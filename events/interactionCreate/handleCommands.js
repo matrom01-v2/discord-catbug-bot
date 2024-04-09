@@ -57,6 +57,7 @@ module.exports = async (client, interaction) => {
 
     } catch (error) {
         console.log(`There was an error running this command: ${error}`);
+        return;
     }
 
     console.log(`Incoming interaction: ${interaction.commandName}`); // prints incoming interaction
