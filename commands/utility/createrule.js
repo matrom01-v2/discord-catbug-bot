@@ -23,21 +23,24 @@ module.exports = {
     //   return;
     // }
 
-    const userRuleNumInput = interaction.options.getInteger("rulenum");
-    console.log(`userRuleNumInput is: ${userRuleNumInput}`);
+    // const userRuleNumInput = interaction.options.getInteger("rulenum");
+    const allRules = await Rule.find({guildId: interaction.guild.id})
+    console.log(`Here are all rules: ${allRules}`)
+    const ruleDbSize = allRules.length;
+    console.log(`userRuleNumInput is: ${ruleDbSize}`);
 
-    const foundRule = await Rule.findOne({
-      guildId: interaction.guild.id,
-      number: userRuleNumInput,
-    });
+    // const foundRule = await Rule.findOne({
+    //   guildId: interaction.guild.id,
+    //   number: userRuleNumInput,
+    // });
 
-    if (foundRule) {
-      console.log(`Found rule in db!!!!`);
-      interaction.reply(
-        `Hey silly! You already made Rule ${userRuleNumInput}.`
-      );
-      return;
-    }
+    // if (foundRule) {
+    //   console.log(`Found rule in db!!!!`);
+    //   interaction.reply(
+    //     `Hey silly! You already made Rule ${userRuleNumInput}.`
+    //   );
+    //   return;
+    // }
 
     // create modal
     const modal = new ModalBuilder()
@@ -76,7 +79,7 @@ module.exports = {
       return;
     }
 
-    const number = userRuleNumInput;
+    const number = ruleDbSize + 1; // add one to the size for next rule
     const title = submission.fields.getTextInputValue("titleInput");
     const description = submission.fields.getTextInputValue("descriptionInput");
 
@@ -97,14 +100,6 @@ module.exports = {
 
   name: "makerule",
   description: "catbug makes a rule for your server, all hail",
-  options: [
-    {
-      name: "rulenum",
-      description: "rule number",
-      required: true,
-      type: Integer,
-    },
-  ],
-    permissionsRequired: [PermissionFlagsBits.Administrator],
-    botPermissions: [PermissionFlagsBits.Administrator],
+  permissionsRequired: [PermissionFlagsBits.Administrator],
+  botPermissions: [PermissionFlagsBits.Administrator],
 };

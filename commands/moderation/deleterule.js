@@ -21,6 +21,11 @@ module.exports = {
   callBack: async (client, interaction) => {
     const ruleNumberInput = interaction.options.getInteger("rulenum");
 
+    // all da rulez
+    const allRules = await Rule.find({guildId: interaction.guild.id})
+            .sort({number: 1});
+
+    // Rule to be murdered
     const foundRule = await Rule.findOne({
       guildId: interaction.guild.id,
       number: ruleNumberInput,
@@ -70,6 +75,10 @@ module.exports = {
     }
 
     try {
+
+
+
+
       await foundRule.deleteOne();
       console.log(`Rule ${ruleNumberInput} deleted from db!`);
     } catch (error) {
