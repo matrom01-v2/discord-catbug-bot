@@ -27,11 +27,11 @@ module.exports = {
     // console.log(`here is the size: ${allRules.length}`);
     // interaction.reply('sorting rules...');
 
-    const allRuleArray = [];
+    const allRuleArray = []; // create object array 
 
     for (const rule of allRules) {
       // console.log(`Here is number: ${rule.number}`);
-      allRuleArray.push(`\n${rule.number}: ${rule.title}`);
+      allRuleArray.push(`\n${rule.number}: ${rule.title}`); // push all rule objs from db onto allRuleArray
     }
 
     // console.log(allRuleSet);
@@ -55,5 +55,6 @@ module.exports = {
 
   name: "show-all-rules",
   description: "Catbug shows a list of all the rules in your server!",
+  deleted: true,
   type: ApplicationCommandOptionType.User,
 };

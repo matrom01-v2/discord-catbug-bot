@@ -25,9 +25,9 @@ module.exports = {
 
     // const userRuleNumInput = interaction.options.getInteger("rulenum");
     const allRules = await Rule.find({guildId: interaction.guild.id})
-    console.log(`Here are all rules: ${allRules}`)
+    // console.log(`Here are all rules: ${allRules}`)
+    // console.log(`userRuleNumInput is: ${ruleDbSize}`);
     const ruleDbSize = allRules.length;
-    console.log(`userRuleNumInput is: ${ruleDbSize}`);
 
     // const foundRule = await Rule.findOne({
     //   guildId: interaction.guild.id,
@@ -100,6 +100,7 @@ module.exports = {
 
   name: "makerule",
   description: "catbug makes a rule for your server, all hail",
+  deleted: true,
   permissionsRequired: [PermissionFlagsBits.Administrator],
   botPermissions: [PermissionFlagsBits.Administrator],
 };

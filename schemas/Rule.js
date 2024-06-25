@@ -13,9 +13,9 @@ const ruleSchema = new Schema({
     },
 
     number: {
-        type: String,
+        type: Number,
         required: true,
-        default: '',
+        default: 0,
     },
 
     title: {
