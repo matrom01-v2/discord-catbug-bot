@@ -21,12 +21,23 @@ module.exports = {
   callBack: async (client, interaction) => {
     const ruleNumberInput = interaction.options.getInteger("rulenum");
 
+    // // all da rulez
+    // const allRules = await Rule.find({guildId: interaction.guild.id})
+    //         .sort({number: 1});
+
+    // Rule to be murdered
     const foundRule = await Rule.findOne({
       guildId: interaction.guild.id,
       number: ruleNumberInput,
     });
 
-    console.log(`Rule found: ${foundRule}`);
+    // Rules to be updated
+    const updateRules = await Rule.find({
+      guildId: interaction.guild.id,
+      number: {$gt: ruleNumberInput}
+    })
+
+    //console.log(`Rule found: ${foundRule}`);
 
     // console.log(`DB found rule: ${foundRule}`);
 
@@ -66,14 +77,28 @@ module.exports = {
 
     const userConfirm = submission.fields.getTextInputValue("confirm");
 
-    if (!userConfirm.toLowerCase() === "confirm") {
-      interaction.reply("no confirm? try again");
+    console.log(`User input for confirm: ${userConfirm}`);
+    if (userConfirm.toLowerCase() !== "confirm") {
       return;
     }
 
     try {
-      await Rule.deleteOne(foundRule);
-      console.log(`Rule object: ${foundRule}`);
+
+      // delete the rule
+      await foundRule.deleteOne();
+
+      // update the rules 
+      /**
+       * WARNING!!! THE NUMBER FIELD IS OF TYPE STRING IN THE DB
+       */
+      // await updateRules.update(
+      //   { $inc: {quantity: -1}}
+      // )
+      console.log(`Inside updateMany rules`);
+      //console.log(`RULES UPDATED!!!!`)
+
+      console.log(`UPDATE RULES: ${updateRules}`)
+      await Rule.updateMany({number: {$gt: ruleNumberInput}}, {$inc: {number: -1}})
       console.log(`Rule ${ruleNumberInput} deleted from db!`);
     } catch (error) {
       console.log(
@@ -84,6 +109,7 @@ module.exports = {
 
   name: "delete-rule",
   description: "Catbug purges a rule from the existence!",
+  deleted: true,
   options: [
     {
       name: "rulenum",

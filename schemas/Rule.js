@@ -1,4 +1,5 @@
 const {Schema, model} = require('mongoose');
+const { INTEGER } = require('sequelize');
 
 const ruleSchema = new Schema({
     userId: {
@@ -12,9 +13,9 @@ const ruleSchema = new Schema({
     },
 
     number: {
-        type: String,
+        type: Number,
         required: true,
-        default: ''
+        default: 0,
     },
 
     title: {

@@ -55,7 +55,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   if(interaction.customId === "deleteRule") {
     await interaction.reply(
-      `I shall purge this rule from your server! Now bring me my big ol\' beer`
+      `I shall purge this rule from your server! Now bring me my big ol\' beer`, {ephemeral: true}
     )
   }
 

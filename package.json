@@ -3,6 +3,7 @@
     "canvacord": "^5.4.8",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
+    "glob": "^10.3.12",
     "mongoose": "^7.0.0",
     "sequelize": "^6.29.0",
     "sqlite3": "^5.1.4"

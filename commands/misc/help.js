@@ -41,6 +41,18 @@ const helperEmbed = new EmbedBuilder({
             name: '/level',
             value: 'I display your level of friendship with me!'
         },
+        {
+            name: '/leaderboard',
+            value: 'I show my top 5 friends!'
+        },
+        {
+            name: '/rules',
+            value: 'I tell you about the rule you asked for!'
+        },
+        {
+            name:'/show-all-rules',
+            value: 'I show you a list of all the rules in the server!'
+        }
     ],
     footer: {
         text: 'Yea but I don\'t know how to make myself go there',
